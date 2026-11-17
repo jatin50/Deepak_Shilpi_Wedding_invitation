@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { weddingConfig } from '@/config/invite';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
@@ -84,27 +85,22 @@ export default function Blessing({ guestName }: BlessingProps) {
         viewport={{ once: true, margin: '-40px' }}
         className="relative z-10 max-w-[460px] w-full flex flex-col items-center"
       >
-        {/* Auspicious Ganesha Motif */}
-        <motion.div variants={itemVariants} className="w-10 h-10 mb-3 text-rose opacity-85">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-            {/* Elegant Ganesha Line-Art */}
-            <path
-              d="M 20 6 C 16 6, 12 10, 12 16 C 12 21, 15 24, 18 26 C 19 28, 18 31, 15 32 C 14 32.5, 12 32, 10 30"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-            />
-            <path
-              d="M 20 6 C 24 6, 28 10, 28 16 C 28 22, 23 27, 20 34"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-            />
-            <circle cx="20" cy="12" r="1.5" fill="currentColor" />
-            <path d="M 16 10 C 20 9, 24 9, 24 10" stroke="currentColor" strokeWidth="1.2" />
-            <circle cx="15" cy="18" r="1" fill="currentColor" />
-            <circle cx="25" cy="18" r="1" fill="currentColor" />
-          </svg>
+        {/* Auspicious Jain Invocation & Prateek Chihna */}
+        <motion.div variants={itemVariants} className="flex flex-col items-center mb-4">
+          <p
+            lang="hi"
+            style={{ fontFamily: 'var(--font-devanagari), serif' }}
+            className="text-[15px] sm:text-[16px] font-medium text-ink tracking-[0.04em] mb-2.5"
+          >
+            {weddingConfig.blessings.invocation}
+          </p>
+          <Image
+            src="/img/jain-symbol.png"
+            alt="Jain Prateek Chihna"
+            width={150}
+            height={240}
+            className="h-[78px] w-auto object-contain opacity-95"
+          />
         </motion.div>
 
         {/* Guest Personalisation (?to=Name) */}

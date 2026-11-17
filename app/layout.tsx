@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Pinyon_Script, Cormorant_Garamond } from 'next/font/google';
+import { Pinyon_Script, Cormorant_Garamond, Noto_Serif_Devanagari } from 'next/font/google';
 import './globals.css';
 import LenisProvider from '@/components/LenisProvider';
 import { weddingConfig } from '@/config/invite';
@@ -19,6 +19,13 @@ const cormorant = Cormorant_Garamond({
   display: 'swap',
 });
 
+const devanagari = Noto_Serif_Devanagari({
+  weight: ['400', '500', '600'],
+  subsets: ['devanagari'],
+  variable: '--font-devanagari',
+  display: 'swap',
+});
+
 const siteUrl =
   process.env.RENDER_EXTERNAL_URL ||
   process.env.NEXT_PUBLIC_SITE_URL ||
@@ -28,6 +35,14 @@ export const metadata: Metadata = {
   title: weddingConfig.meta.title,
   description: weddingConfig.meta.description,
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    shortcut: '/favicon-32x32.png',
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     title: weddingConfig.meta.title,
     description: weddingConfig.meta.description,
@@ -66,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${pinyon.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${pinyon.variable} ${cormorant.variable} ${devanagari.variable}`}>
       <body className="bg-bg text-ink antialiased min-h-screen selection:bg-rose/30">
         <LenisProvider>{children}</LenisProvider>
       </body>

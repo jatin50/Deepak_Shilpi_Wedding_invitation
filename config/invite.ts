@@ -38,6 +38,7 @@ export interface WeddingConfig {
     brideLineage: string;
   };
   blessings: {
+    invocation: string;
     elders: string;
     invitationNote: string;
   };
@@ -101,6 +102,7 @@ export const weddingConfig: WeddingConfig = {
     brideLineage: 'D/O Smt. Yashoda Garg & Sh. Ashok Garg',
   },
   blessings: {
+    invocation: '॥ श्री महावीराय नमः ॥',
     elders: 'Under The Blessings of Late Smt. Tara Bai Jain & Late Sh. Shyam Lal Jain',
     invitationNote: 'we cordially invite you to the wedding ceremony of our Son',
   },

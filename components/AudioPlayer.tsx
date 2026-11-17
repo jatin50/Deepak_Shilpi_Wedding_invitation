@@ -8,7 +8,7 @@ interface AudioPlayerProps {
   shouldStart: boolean;
 }
 
-const TARGET_VOLUME = 0.48;
+const TARGET_VOLUME = 0.38;
 
 export default function AudioPlayer({ shouldStart }: AudioPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);

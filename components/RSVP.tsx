@@ -103,8 +103,8 @@ export default function RSVP() {
             {/* Header label */}
             <span className="label-small tracking-[0.2em] mb-2">WITH BEST COMPLIMENTS</span>
 
-            {/* R·S·V·P in Cormorant (Not script, wide letter spacing) */}
-            <h2 className="font-serif text-3xl sm:text-4xl text-ink font-semibold tracking-wide mb-4">
+            {/* R·S·V·P in Cormorant (single line on all mobile viewports) */}
+            <h2 className="font-serif text-[26px] sm:text-4xl text-ink font-semibold tracking-[0.14em] sm:tracking-[0.22em] whitespace-nowrap mb-4">
               R · S · V · P
             </h2>
 
