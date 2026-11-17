@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trending Wedding Invitation Prototypes | Deepak & Shilpi</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0f0c15;
+    }
+    .serif-title {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+</head>
+<body class="text-white min-h-screen selection:bg-amber-400 selection:text-black pb-24">
+
+  <!-- Header -->
+  <header class="border-b border-white/10 bg-black/40 backdrop-blur-md sticky top-0 z-30 py-4 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center space-x-3">
+        <span class="text-2xl">💍</span>
+        <div>
+          <h1 class="text-base font-bold text-white leading-tight">Trending Wedding Invitation Prototypes</h1>
+          <p class="text-xs text-amber-400">Deepak Jain &amp; Shilpi Garg • 11th-12th Dec 2026</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2 text-xs bg-white/10 px-3 py-1.5 rounded-full border border-white/10">
+        <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+        <span>5 Viral Formats Built &amp; Ready</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 space-y-10">
+
+    <div class="text-center max-w-3xl mx-auto space-y-3">
+      <span class="px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest">
+        Interactive Prototype Showcase
+      </span>
+      <h2 class="serif-title text-3xl sm:text-5xl font-bold tracking-tight text-white">
+        Choose the Perfect Aesthetic for Deepak &amp; Shilpi
+      </h2>
+      <p class="text-sm sm:text-base text-white/70 leading-relaxed">
+        Below are 5 live, fully interactive prototypes based on the biggest wedding invitation trends on Instagram. Tap any prototype to open and experience it live!
+      </p>
+
+      <!-- Live Guest Name Tester Input -->
+      <div class="pt-4 max-w-md mx-auto">
+        <label class="block text-xs uppercase tracking-wider text-white/50 mb-1.5 font-bold">
+          Test With Personalized Relative Name:
+        </label>
+        <div class="flex gap-2">
+          <input type="text" id="demoGuestInput" value="Sharma Ji & Parivaar" class="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+          <button onclick="updateGuestParams()" class="bg-amber-400 hover:bg-amber-300 text-black font-bold px-4 py-2 rounded-xl text-xs transition">
+            Apply Name
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 Prototypes Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- PROTOTYPE 1: Royal Wax Seal & Palace Doors (Chalchitra Reel) -->
+      <div class="bg-[#1e070e] border-2 border-red-900/60 hover:border-amber-400 rounded-3xl p-6 transition-all duration-300 flex flex-col justify-between shadow-2xl relative overflow-hidden group">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-red-950 text-red-300 border border-red-700/50">
+              #1 The Reel Original
+            </span>
+            <span class="text-2xl">💮</span>
+          </div>
+
+          <div>
+            <h3 class="serif-title text-2xl font-bold text-amber-200 group-hover:text-amber-300 transition">
+              Royal Wax Seal &amp; Palace Gates
+            </h3>
+            <p class="text-xs text-red-200/70 mt-1">
+              "Seal toota, darwaze khule, aur phoolon ki baarish!" The viral traditional palace entrance.
+            </p>
+          </div>
+
+          <!-- Feature Bullets -->
+          <ul class="text-xs text-white/80 space-y-1.5 pt-2 border-t border-white/10">
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span>3D Monogram "D &amp; S" Wax Seal with sound</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span>Double palace doors 3D swing</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span>Phoolon ki Baarish (falling rose petals)</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span>Live Shehnai BGM &amp; Muhurat Countdown</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-6">
+          <a id="link-royal" href="../index.html?guest=Sharma+Ji+%26+Parivaar" target="_blank" class="w-full bg-gradient-to-r from-red-800 to-amber-700 hover:from-red-700 hover:to-amber-600 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition shadow-lg">
+            <span>Launch Royal Gate Demo</span>
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROTOTYPE 2: Spotify Wrapped Edition -->
+      <div class="bg-[#121b14] border-2 border-emerald-900/60 hover:border-[#1db954] rounded-3xl p-6 transition-all duration-300 flex flex-col justify-between shadow-2xl relative overflow-hidden group">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-950 text-[#1db954] border border-emerald-700/50">
+              #2 Gen-Z &amp; Viral Hit
+            </span>
+            <span class="text-2xl">🎧</span>
+          </div>
+
+          <div>
+            <h3 class="serif-title text-2xl font-bold text-[#1db954] group-hover:text-emerald-300 transition">
+              2026 Spotify Wrapped
+            </h3>
+            <p class="text-xs text-emerald-200/70 mt-1">
+              "You listened to love all year long!" Music festival tour dates, vinyl disc, and tracklist events.
+            </p>
+          </div>
+
+          <!-- Feature Bullets -->
+          <ul class="text-xs text-white/80 space-y-1.5 pt-2 border-t border-white/10">
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-[#1db954]"></i>
+              <span>Spinning vinyl record &amp; audio visualizer</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-[#1db954]"></i>
+              <span>Events presented as a 5-track album</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-[#1db954]"></i>
+              <span>Sangeet DJ song request form</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-[#1db954]"></i>
+              <span>VIP Backstage Pass for guest</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-6">
+          <a id="link-spotify" href="spotify-wrapped.html?guest=Sharma+Ji+%26+Parivaar" target="_blank" class="w-full bg-[#1db954] hover:bg-[#1ed760] text-black font-extrabold py-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition shadow-lg">
+            <span>Launch Spotify Wrapped</span>
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROTOTYPE 3: The Wedding Chronicle Newspaper -->
+      <div class="bg-[#1c1813] border-2 border-amber-900/60 hover:border-amber-300 rounded-3xl p-6 transition-all duration-300 flex flex-col justify-between shadow-2xl relative overflow-hidden group">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-amber-950 text-amber-300 border border-amber-700/50">
+              #3 Vintage Aesthetic
+            </span>
+            <span class="text-2xl">📰</span>
+          </div>
+
+          <div>
+            <h3 class="serif-title text-2xl font-bold text-amber-200 group-hover:text-amber-100 transition">
+              The Wedding Chronicle
+            </h3>
+            <p class="text-xs text-amber-200/70 mt-1">
+              "EXTRA! EXTRA! READ ALL ABOUT IT!" 1920s vintage weathered broadsheet morning newspaper.
+            </p>
+          </div>
+
+          <!-- Feature Bullets -->
+          <ul class="text-xs text-white/80 space-y-1.5 pt-2 border-t border-white/10">
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-amber-300"></i>
+              <span>Classic aged paper &amp; serif headlines</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-amber-300"></i>
+              <span>Weekend wedding weather forecast bulletin</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-amber-300"></i>
+              <span>Interactive Urgent Telegram dispatch</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-amber-300"></i>
+              <span>Society gossip &amp; Barati dress rules</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-6">
+          <a id="link-newspaper" href="wedding-chronicle.html?guest=Sharma+Ji+%26+Parivaar" target="_blank" class="w-full bg-[#f4eedb] hover:bg-white text-black font-extrabold py-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition shadow-lg">
+            <span>Launch Newspaper Demo</span>
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROTOTYPE 4: Vogue High Fashion Magazine -->
+      <div class="bg-[#141416] border-2 border-neutral-700/60 hover:border-white rounded-3xl p-6 transition-all duration-300 flex flex-col justify-between shadow-2xl relative overflow-hidden group">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-neutral-800 text-white border border-neutral-600">
+              #4 High Fashion Chic
+            </span>
+            <span class="text-2xl">💎</span>
+          </div>
+
+          <div>
+            <h3 class="serif-title text-2xl font-bold text-white group-hover:text-neutral-200 transition">
+              Vogue Editorial Issue
+            </h3>
+            <p class="text-xs text-neutral-400 mt-1">
+              "The Union of the Season." Ultra-sleek minimalist celebrity magazine with couture lookbooks.
+            </p>
+          </div>
+
+          <!-- Feature Bullets -->
+          <ul class="text-xs text-white/80 space-y-1.5 pt-2 border-t border-white/10">
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-white"></i>
+              <span>High contrast editorial typography &amp; layout</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-white"></i>
+              <span>Couture outfit color palette swatches</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-white"></i>
+              <span>Runway schedule for ceremonies</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-white"></i>
+              <span>VIP Front-Row Seat pass</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-6">
+          <a id="link-vogue" href="vogue-editorial.html?guest=Sharma+Ji+%26+Parivaar" target="_blank" class="w-full bg-white hover:bg-neutral-200 text-black font-extrabold py-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition shadow-lg">
+            <span>Launch Vogue Magazine</span>
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROTOTYPE 5: Shaadi Level 1-1 (8-Bit Arcade Game) -->
+      <div class="bg-[#1a082b] border-2 border-fuchsia-900/60 hover:border-pink-500 rounded-3xl p-6 transition-all duration-300 flex flex-col justify-between shadow-2xl relative overflow-hidden group">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-purple-950 text-pink-400 border border-pink-700/50">
+              #5 Viral Retro Gaming
+            </span>
+            <span class="text-2xl">👾</span>
+          </div>
+
+          <div>
+            <h3 class="serif-title text-2xl font-bold text-pink-400 group-hover:text-pink-300 transition">
+              Shaadi: Level 1-1
+            </h3>
+            <p class="text-xs text-pink-200/70 mt-1">
+              "Select Player: Deepak (Groom) &amp; Shilpi (Bride)." 8-bit retro arcade quest with sound effects.
+            </p>
+          </div>
+
+          <!-- Feature Bullets -->
+          <ul class="text-xs text-white/80 space-y-1.5 pt-2 border-t border-white/10">
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-pink-400"></i>
+              <span>Pixel art character stats &amp; HUD score</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-pink-400"></i>
+              <span>Shagun coin clicker with 8-bit sound fx</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-pink-400"></i>
+              <span>Boss Raid Final Stage (Varmala &amp; Pheras)</span>
+            </li>
+            <li class="flex items-center space-x-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-pink-400"></i>
+              <span>Co-op guest party player card</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-6">
+          <a id="link-retro" href="retro-arcade.html?guest=Sharma+Ji+%26+Parivaar" target="_blank" class="w-full bg-[#ff007f] hover:bg-pink-600 text-white font-extrabold py-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition shadow-lg">
+            <span>Launch Retro Arcade</span>
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Recommendation Summary Table -->
+    <div class="bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 mt-12">
+      <h3 class="serif-title text-2xl font-bold text-white mb-4">
+        Which Invitation Format Best Fits the Vibe?
+      </h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs sm:text-sm text-white/80">
+          <thead class="text-amber-400 uppercase text-[11px] border-b border-white/10">
+            <tr>
+              <th class="py-3 pr-4">Concept</th>
+              <th class="py-3 px-4">Best For</th>
+              <th class="py-3 px-4">Guest Reaction</th>
+              <th class="py-3 pl-4">Signature Hook</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5">
+            <tr>
+              <td class="py-3 pr-4 font-bold text-white">1. Royal Wax &amp; Palace Doors</td>
+              <td class="py-3 px-4">Traditional &amp; Grand Indian weddings (Grandparents &amp; Family love this)</td>
+              <td class="py-3 px-4">"Ye card hai ya jaadu!" (Awe &amp; Luxury)</td>
+              <td class="py-3 pl-4 text-amber-300">Tap-to-crack wax seal &amp; rose petals</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-4 font-bold text-white">2. Spotify 2026 Wrapped</td>
+              <td class="py-3 px-4">Fun, music-loving couple &amp; young cousins/friends</td>
+              <td class="py-3 px-4">Immediate Instagram Story screenshot</td>
+              <td class="py-3 pl-4 text-[#1db954]">Spinning vinyl, music tracklist, DJ queue</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-4 font-bold text-white">3. The Wedding Chronicle</td>
+              <td class="py-3 px-4">Intellectual, quirky, vintage lovers</td>
+              <td class="py-3 px-4">Guests read every single funny column line</td>
+              <td class="py-3 pl-4 text-amber-200">1920s newspaper headlines &amp; telegrams</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-4 font-bold text-white">4. Vogue Magazine Issue</td>
+              <td class="py-3 px-4">Destination, minimal, high-fashion couples</td>
+              <td class="py-3 px-4">"Celebrity wedding level styling"</td>
+              <td class="py-3 pl-4 text-white">Couture color palette &amp; runway schedule</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-4 font-bold text-white">5. Shaadi: Level 1-1 Arcade</td>
+              <td class="py-3 px-4">Tech-savvy, gamers, fun-loving couples</td>
+              <td class="py-3 px-4">Guests play the coin clicker repeatedly</td>
+              <td class="py-3 pl-4 text-pink-400">8-bit sounds, Player 1 vs Player 2 stats</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    if (window.lucide) lucide.createIcons();
+
+    function updateGuestParams() {
+      const name = encodeURIComponent(document.getElementById('demoGuestInput').value.trim() || 'Sharma Ji & Parivaar');
+      document.getElementById('link-royal').href = `../index.html?guest=${name}`;
+      document.getElementById('link-spotify').href = `spotify-wrapped.html?guest=${name}`;
+      document.getElementById('link-newspaper').href = `wedding-chronicle.html?guest=${name}`;
+      document.getElementById('link-vogue').href = `vogue-editorial.html?guest=${name}`;
+      document.getElementById('link-retro').href = `retro-arcade.html?guest=${name}`;
+      alert(`Applied "${decodeURIComponent(name)}" to all prototype links!`);
+    }
+  </script>
+</body>
+</html>

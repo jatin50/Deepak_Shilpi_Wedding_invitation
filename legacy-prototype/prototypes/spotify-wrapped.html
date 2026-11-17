@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deepak & Shilpi's 2026 Wrapped | Wedding Invitation</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Circular+Std:wght@400;500;700;900&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(circle at 50% 0%, #1e3a24 0%, #121212 50%, #080808 100%);
+    }
+    .equalizer-bar {
+      animation: bounce 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes bounce {
+      0% { height: 4px; }
+      100% { height: 22px; }
+    }
+    .glow-green {
+      box-shadow: 0 0 35px rgba(29, 185, 84, 0.35);
+    }
+  </style>
+</head>
+<body class="text-white min-h-screen pb-20 selection:bg-[#1db954] selection:text-black">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-30 bg-[#121212]/90 backdrop-blur-md border-b border-white/10 px-4 py-3 flex items-center justify-between max-w-2xl mx-auto">
+    <div class="flex items-center space-x-2">
+      <div class="w-7 h-7 rounded-full bg-[#1db954] flex items-center justify-center text-black font-black text-sm">
+        <i data-lucide="radio" class="w-4 h-4"></i>
+      </div>
+      <span class="text-xs font-bold uppercase tracking-wider text-white/90">Wedding Wrapped • 2026</span>
+    </div>
+    <div class="flex items-center space-x-2">
+      <span class="text-[11px] bg-white/10 px-2.5 py-1 rounded-full text-white/80">#DeepakWedsShilpi</span>
+    </div>
+  </header>
+
+  <main class="max-w-xl mx-auto px-4 pt-6 space-y-6">
+
+    <!-- Hero Album Cover & Story Header -->
+    <div class="bg-gradient-to-br from-[#1db954]/20 via-[#181818] to-[#121212] border border-white/10 rounded-3xl p-6 glow-green relative overflow-hidden">
+      <div class="absolute -right-8 -top-8 w-40 h-40 bg-[#1db954]/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Badge -->
+      <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#1db954]/20 border border-[#1db954]/40 text-[#1db954] text-xs font-bold uppercase tracking-wider mb-4">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+        <span>Official Tour Announcement</span>
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-1">
+        Deepak Jain &amp; Shilpi Garg
+      </h1>
+      <p class="text-sm text-[#1db954] font-semibold flex items-center space-x-1.5">
+        <span>The "Forever Together" World Tour</span>
+        <span>•</span>
+        <span>Delhi NCR</span>
+      </p>
+
+      <!-- Vinyl & Stats Card -->
+      <div class="mt-6 flex flex-col sm:flex-row items-center gap-5 bg-black/40 border border-white/10 rounded-2xl p-4">
+        <!-- Spinning Vinyl Graphic -->
+        <div class="relative w-28 h-28 shrink-0 flex items-center justify-center rounded-full bg-gradient-to-tr from-neutral-900 to-neutral-800 border-4 border-neutral-700 shadow-2xl animate-[spin_8s_linear_infinite]">
+          <div class="w-10 h-10 rounded-full bg-[#1db954] flex items-center justify-center text-black font-black text-xs border-2 border-black">
+            D &amp; S
+          </div>
+          <div class="absolute inset-2 rounded-full border border-white/10"></div>
+          <div class="absolute inset-5 rounded-full border border-white/10"></div>
+        </div>
+
+        <!-- Wrapped Stats -->
+        <div class="space-y-1.5 text-center sm:text-left flex-1">
+          <p class="text-xs uppercase text-white/50 tracking-wider">Top Genre</p>
+          <p class="text-lg font-bold text-white leading-tight">Bollywood Romance &amp; Sangeet Beats</p>
+          <div class="grid grid-cols-2 gap-2 pt-2 text-xs">
+            <div class="bg-white/5 p-2 rounded-lg border border-white/5">
+              <span class="text-white/50 block text-[10px]">Minutes in Love</span>
+              <span class="font-extrabold text-[#1db954]">1,440,000+</span>
+            </div>
+            <div class="bg-white/5 p-2 rounded-lg border border-white/5">
+              <span class="text-white/50 block text-[10px]">Tour Dates</span>
+              <span class="font-extrabold text-white">11 &amp; 12 Dec 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personalized VIP Access Pass -->
+    <div id="vipPass" class="bg-[#181818] border border-white/10 rounded-2xl p-4 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1db954] to-emerald-700 flex items-center justify-center text-black font-bold">
+          <i data-lucide="ticket" class="w-5 h-5 text-black"></i>
+        </div>
+        <div>
+          <span class="text-[10px] text-white/50 uppercase tracking-widest block font-bold">Guest Backstage Pass</span>
+          <span id="guestLabel" class="text-sm font-bold text-white">Sharma Ji &amp; Family</span>
+        </div>
+      </div>
+      <span class="text-xs text-[#1db954] font-semibold bg-[#1db954]/10 border border-[#1db954]/30 px-3 py-1 rounded-full">
+        VIP All-Access
+      </span>
+    </div>
+
+    <!-- The Wedding Tracklist (Event Schedule) -->
+    <div class="space-y-3">
+      <div class="flex items-center justify-between px-1">
+        <h2 class="text-lg font-extrabold text-white flex items-center space-x-2">
+          <i data-lucide="list-music" class="w-5 h-5 text-[#1db954]"></i>
+          <span>Official Event Tracklist</span>
+        </h2>
+        <span class="text-xs text-white/50">5 Tracks • 48 Hours</span>
+      </div>
+
+      <!-- Track 01: Haldi -->
+      <div class="event-row group bg-[#181818] hover:bg-[#222222] border border-white/5 hover:border-[#1db954]/50 rounded-2xl p-4 transition-all duration-200">
+        <div class="flex items-start justify-between">
+          <div class="flex items-center space-x-3.5">
+            <span class="text-sm font-black text-white/40 group-hover:text-[#1db954] w-5 text-center">01</span>
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-[#1db954] transition flex items-center space-x-2">
+                <span>Rang De Haldi</span>
+                <span class="text-xs bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 px-2 py-0.5 rounded-full font-medium">Yellow Swag</span>
+              </h3>
+              <p class="text-xs text-white/60 mt-0.5">Turmeric splash &amp; folk dholak • 11th Dec @ 10:30 AM</p>
+            </div>
+          </div>
+          <button onclick="toggleLike(this)" class="text-white/40 hover:text-[#1db954] transition p-1">
+            <i data-lucide="heart" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <div class="mt-3 pt-3 border-t border-white/5 flex gap-2">
+          <button onclick="openMaps('Haldi Venue')" class="flex-1 text-xs bg-white/5 hover:bg-white/10 py-1.5 rounded-lg border border-white/10 flex items-center justify-center space-x-1.5 text-white/80 transition">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#1db954]"></i>
+            <span>Venue Map</span>
+          </button>
+          <button onclick="addToCalendar('Haldi - Deepak & Shilpi', '20261211T103000', '20261211T133000')" class="flex-1 text-xs bg-white/5 hover:bg-white/10 py-1.5 rounded-lg border border-white/10 flex items-center justify-center space-x-1.5 text-white/80 transition">
+            <i data-lucide="calendar" class="w-3.5 h-3.5 text-[#1db954]"></i>
+            <span>Add to Queue</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Track 02: Mehendi -->
+      <div class="event-row group bg-[#181818] hover:bg-[#222222] border border-white/5 hover:border-[#1db954]/50 rounded-2xl p-4 transition-all duration-200">
+        <div class="flex items-start justify-between">
+          <div class="flex items-center space-x-3.5">
+            <span class="text-sm font-black text-white/40 group-hover:text-[#1db954] w-5 text-center">02</span>
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-[#1db954] transition flex items-center space-x-2">
+                <span>Mehendi Ki Raat</span>
+                <span class="text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full font-medium">Mint &amp; Green</span>
+              </h3>
+              <p class="text-xs text-white/60 mt-0.5">Henna dreams, chatpati chaat • 11th Dec @ 03:00 PM</p>
+            </div>
+          </div>
+          <button onclick="toggleLike(this)" class="text-white/40 hover:text-[#1db954] transition p-1">
+            <i data-lucide="heart" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <div class="mt-3 pt-3 border-t border-white/5 flex gap-2">
+          <button onclick="openMaps('Mehendi Venue')" class="flex-1 text-xs bg-white/5 hover:bg-white/10 py-1.5 rounded-lg border border-white/10 flex items-center justify-center space-x-1.5 text-white/80 transition">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#1db954]"></i>
+            <span>Venue Map</span>
+          </button>
+          <button onclick="addToCalendar('Mehendi - Deepak & Shilpi', '20261211T150000', '20261211T180000')" class="flex-1 text-xs bg-white/5 hover:bg-white/10 py-1.5 rounded-lg border border-white/10 flex items-center justify-center space-x-1.5 text-white/80 transition">
+            <i data-lucide="calendar" class="w-3.5 h-3.5 text-[#1db954]"></i>
+            <span>Add to Queue</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Track 03: Sangeet Night (HIT TRACK) -->
+      <div class="event-row group bg-[#181818] hover:bg-[#222222] border-2 border-[#1db954]/50 rounded-2xl p-4 transition-all duration-200 glow-green">
+        <div class="flex items-start justify-between">
+          <div class="flex items-center space-x-3.5">
+            <span class="text-sm font-black text-[#1db954] w-5 text-center">★ 03</span>
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-[#1db954] transition flex items-center space-x-2">
+                <span>Sangeet &amp; Cocktail Blast</span>
+                <span class="text-xs bg-[#1db954]/20 text-[#1db954] border border-[#1db954]/40 px-2 py-0.5 rounded-full font-bold">Trending #1</span>
+              </h3>
+              <p class="text-xs text-white/60 mt-0.5">Family dance-offs, bass drop • 11th Dec @ 07:30 PM</p>
+            </div>
+          </div>
+          <button onclick="toggleLike(this)" class="text-[#1db954] transition p-1">
+            <i data-lucide="heart" class="w-5 h-5 fill-current"></i>
+          </button>
+        </div>
+        <div class="mt-3 pt-3 border-t border-white/5 flex gap-2">
+          <button onclick="openMaps('Sangeet Venue')" class="flex-1 text-xs bg-white/5 hover:bg-white/10 py-1.5 rounded-lg border border-white/10 flex items-center justify-center space-x-1.5 text-white/80 transition">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#1db954]"></i>
+            <span>Venue Map</span>
+          </button>
+          <button onclick="addToCalendar('Sangeet Night - Deepak & Shilpi', '20261211T193000', '20261212T010000')" class="flex-1 text-xs bg-[#1db954] text-black font-bold py-1.5 rounded-lg flex items-center justify-center space-x-1.5 transition hover:bg-[#1ed760]">
+            <i data-lucide="calendar" class="w-3.5 h-3.5 text-black"></i>
+            <span>Set Reminder</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Track 04: The Big Finale / Wedding -->
+      <div class="event-row group bg-[#181818] hover:bg-[#222222] border border-white/5 hover:border-[#1db954]/50 rounded-2xl p-4 transition-all duration-200">
+        <div class="flex items-start justify-between">
+          <div class="flex items-center space-x-3.5">
+            <span class="text-sm font-black text-white/40 group-hover:text-[#1db954] w-5 text-center">04</span>
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-[#1db954] transition flex items-center space-x-2">
+                <span>The Main Stage: Varmala &amp; Pheras</span>
+                <span class="text-xs bg-red-500/20 text-red-400 border border-red-500/30 px-2 py-0.5 rounded-full font-medium">The Vows</span>
+              </h3>
+              <p class="text-xs text-white/60 mt-0.5">Baraat @ 5:30 PM • Varmala @ 7:30 PM • 12th Dec</p>
+            </div>
+          </div>
+          <button onclick="toggleLike(this)" class="text-white/40 hover:text-[#1db954] transition p-1">
+            <i data-lucide="heart" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <div class="mt-3 pt-3 border-t border-white/5 flex gap-2">
+          <button onclick="openMaps('Mandap Venue')" class="flex-1 text-xs bg-white/5 hover:bg-white/10 py-1.5 rounded-lg border border-white/10 flex items-center justify-center space-x-1.5 text-white/80 transition">
+            <i data-lucide="navigation" class="w-3.5 h-3.5 text-[#1db954]"></i>
+            <span>Mandap GPS</span>
+          </button>
+          <button onclick="addToCalendar('Wedding - Deepak & Shilpi', '20261212T173000', '20261212T233000')" class="flex-1 text-xs bg-white/5 hover:bg-white/10 py-1.5 rounded-lg border border-white/10 flex items-center justify-center space-x-1.5 text-white/80 transition">
+            <i data-lucide="calendar" class="w-3.5 h-3.5 text-[#1db954]"></i>
+            <span>Add to Queue</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Request a Track for Sangeet -->
+    <div class="bg-gradient-to-r from-neutral-900 to-[#181818] border border-white/10 rounded-2xl p-5">
+      <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+        <i data-lucide="disc" class="w-4 h-4 text-[#1db954]"></i>
+        <span>Queue Your Song to the Sangeet DJ</span>
+      </h3>
+      <p class="text-xs text-white/60 mt-1">What banger will get you dancing on the floor?</p>
+      <form id="trackForm" class="mt-3 flex gap-2">
+        <input type="text" id="songInput" placeholder="Song title (e.g. London Thumakda)" required class="flex-1 bg-black/60 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#1db954]">
+        <button type="submit" class="bg-[#1db954] hover:bg-[#1ed760] text-black font-bold px-4 py-2 rounded-xl text-xs transition">
+          Add
+        </button>
+      </form>
+    </div>
+
+  </main>
+
+  <!-- Sticky Bottom Spotify Player Bar -->
+  <div class="fixed bottom-0 inset-x-0 bg-[#181818]/95 backdrop-blur-lg border-t border-white/10 p-3 z-40 max-w-xl mx-auto flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-[#1db954] to-yellow-400 flex items-center justify-center text-black font-extrabold text-xs shadow-md">
+        💍
+      </div>
+      <div>
+        <p class="text-xs font-bold text-white">Din Shagna Da (Wedding Edit)</p>
+        <p class="text-[10px] text-white/60">Deepak &amp; Shilpi • 2026</p>
+      </div>
+    </div>
+
+    <!-- Play Controls -->
+    <div class="flex items-center space-x-3">
+      <!-- Animated Equalizer -->
+      <div id="equalizer" class="flex items-end space-x-0.5 h-6">
+        <span class="equalizer-bar w-1 bg-[#1db954] rounded-full" style="animation-duration: 0.8s;"></span>
+        <span class="equalizer-bar w-1 bg-[#1db954] rounded-full" style="animation-duration: 1.1s;"></span>
+        <span class="equalizer-bar w-1 bg-[#1db954] rounded-full" style="animation-duration: 0.6s;"></span>
+        <span class="equalizer-bar w-1 bg-[#1db954] rounded-full" style="animation-duration: 0.9s;"></span>
+      </div>
+
+      <button id="playBtn" onclick="toggleAudio()" class="w-9 h-9 rounded-full bg-white hover:bg-neutral-200 text-black flex items-center justify-center transition shadow-lg">
+        <i id="playIcon" data-lucide="pause" class="w-4 h-4 fill-current"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    if (window.lucide) lucide.createIcons();
+
+    // Check personalized URL ?guest=...
+    const urlParams = new URLSearchParams(window.location.search);
+    const guest = urlParams.get('guest');
+    if (guest) {
+      document.getElementById('guestLabel').textContent = decodeURIComponent(guest.replace(/\+/g, ' '));
+    }
+
+    let isPlaying = true;
+    function toggleAudio() {
+      isPlaying = !isPlaying;
+      const playIcon = document.getElementById('playIcon');
+      const eq = document.getElementById('equalizer');
+      if (isPlaying) {
+        eq.style.opacity = '1';
+        playIcon.setAttribute('data-lucide', 'pause');
+      } else {
+        eq.style.opacity = '0.3';
+        playIcon.setAttribute('data-lucide', 'play');
+      }
+      lucide.createIcons();
+    }
+
+    function toggleLike(btn) {
+      const icon = btn.querySelector('svg') || btn.querySelector('i');
+      btn.classList.toggle('text-[#1db954]');
+      btn.classList.toggle('text-white/40');
+    }
+
+    function openMaps(v) {
+      window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v + ', Delhi NCR')}`, '_blank');
+    }
+
+    function addToCalendar(title, start, end) {
+      const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${start}/${end}&details=Wedding+of+Deepak+and+Shilpi&location=Grand+Palace+Delhi`;
+      window.open(url, '_blank');
+    }
+
+    document.getElementById('trackForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('songInput');
+      alert(`🎵 "${input.value}" has been added to the Sangeet playlist queue!`);
+      input.value = '';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #fbf1ed;
+  --color-card: #fff9f6;
+  --color-ink: #8a5560;
+  --color-soft: #b58c92;
+  --color-rose: #d9a0a8;
+  --color-line: #ecd3cd;
+  --color-sage: #a9bfa8;
+  --color-wash: #f6dcd6;
+  --color-intro-pink: #e9b5bd;
+}
+
+html {
+  font-family: var(--font-cormorant), Georgia, serif;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  line-height: 1.55;
+  font-size: 19px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body.scroll-locked {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Luxury double-border stationery box (1px border plus an inner 1px outline inset by 9px) */
+.stationery-card {
+  position: relative;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 8px 30px -8px rgba(217, 160, 168, 0.2);
+}
+
+.stationery-card::before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  bottom: 9px;
+  left: 9px;
+  right: 9px;
+  border: 1px solid var(--color-line);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Mughal Arch Curves */
+.arch-hero {
+  border-radius: 260px 260px 0 0;
+}
+
+.arch-window {
+  border-radius: 180px 180px 0 0;
+}
+
+/* Small label styling */
+.label-small {
+  font-family: var(--font-cormorant), serif;
+  font-size: 14.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-soft);
+  font-weight: 500;
+}
+
+/* Focus styles for keyboard accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+/* Reduce motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

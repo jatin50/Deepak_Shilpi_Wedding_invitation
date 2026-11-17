@@ -1,0 +1,135 @@
+/* ======================================================== */
+/* DEEPAK & SHILPI ROYAL CARD MORPH ANIMATION STYLES       */
+/* ======================================================== */
+
+/* Subtle handmade paper grain texture */
+.paper-grain {
+  background-image: radial-gradient(#d3c6b2 0.75px, transparent 0.75px);
+  background-size: 14px 14px;
+}
+
+/* Card Outer Luxury Soft Shadow */
+.card-outer-shadow {
+  box-shadow: 
+    0 25px 50px -12px rgba(120, 21, 36, 0.18),
+    0 0 0 1px rgba(229, 165, 154, 0.25),
+    0 10px 25px -5px rgba(0, 0, 0, 0.08);
+}
+
+/* Arch Pillar & Crown Smooth Morph Transitions */
+.arch-fill {
+  transition: fill 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.arch-stroke {
+  transition: stroke 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Morph Theme Color States */
+body.theme-vivah .arch-fill { fill: #e5a59a; }
+body.theme-vivah .arch-stroke { stroke: #c97365; }
+
+body.theme-haldi .arch-fill { fill: #fde047; }
+body.theme-haldi .arch-stroke { stroke: #d97706; }
+
+body.theme-mehendi .arch-fill { fill: #86efac; }
+body.theme-mehendi .arch-stroke { stroke: #15803d; }
+
+body.theme-sangeet .arch-fill { fill: #d8b4fe; }
+body.theme-sangeet .arch-stroke { stroke: #7e22ce; }
+
+/* Morph Card Slide Layer Mechanics */
+.card-slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), 
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.5s ease;
+  will-change: transform, opacity;
+}
+
+/* Active Slide State */
+.card-slide.active-slide {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
+  filter: blur(0px);
+}
+
+/* Hidden Slide State (Morphs out smoothly) */
+.card-slide.hidden-slide {
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  pointer-events: none;
+  position: absolute;
+  top: 40px;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  z-index: 0;
+  filter: blur(3px);
+}
+
+/* Backward Morph Animation State */
+.card-slide.slide-back {
+  transform: translateY(-18px) scale(0.96);
+}
+
+/* Staggered Content Inward Float */
+.active-slide h2,
+.active-slide h3 {
+  animation: slideTitleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.active-slide .card-details-box,
+.active-slide svg {
+  animation: slideContentIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slideTitleIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideContentIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dots Styling */
+.dot-btn {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.active-dot {
+  width: 24px !important;
+  background-color: #781524 !important;
+}
+
+/* Subtle Pulsing for Groom Kalgi / Highlights */
+@keyframes softGlow {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 1; filter: drop-shadow(0 0 4px #cda851); }
+}
+
+#groomGraphic circle {
+  animation: softGlow 2.5s ease-in-out infinite;
+}
