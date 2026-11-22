@@ -25,11 +25,11 @@ export default function QuoteBand() {
       {/* Background Gradient & Parallax Lace Pattern */}
       <motion.div
         style={prefersReduced ? {} : { y: bgY }}
-        className="absolute -inset-10 z-0 bg-gradient-to-b from-[#e8b4b4] via-[#dfa5af] to-[#d99aa3]"
+        className="absolute -inset-10 z-0 bg-gradient-to-b from-[#2b565b] via-[#1f4246] to-[#152e31]"
       >
         {/* Seamless Lace Pattern Overlay */}
         <div
-          className="w-full h-full opacity-35"
+          className="w-full h-full opacity-30"
           style={{
             backgroundImage: `url('/img/lace.webp')`,
             backgroundRepeat: 'repeat',
@@ -38,7 +38,7 @@ export default function QuoteBand() {
         />
 
         {/* Delicate Vignette */}
-        <div className="absolute inset-0 bg-radial-vignette opacity-20 pointer-events-none" />
+        <div className="absolute inset-0 bg-radial-vignette opacity-25 pointer-events-none" />
       </motion.div>
 
       {/* Quote Content with Soft Blur-to-Sharp Fade */}
@@ -49,7 +49,7 @@ export default function QuoteBand() {
           whileInView={prefersReduced ? { opacity: 1 } : { opacity: 1, filter: 'blur(0px)', y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: prefersReduced ? 0.3 : 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="font-script text-[42px] sm:text-[56px] text-white leading-tight drop-shadow-[0_2px_10px_rgba(138,85,96,0.3)] mb-4"
+          className="font-script text-[42px] sm:text-[56px] text-white leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)] mb-4"
         >
           “{weddingConfig.quote.text}”
         </motion.p>
@@ -60,7 +60,7 @@ export default function QuoteBand() {
           whileInView={prefersReduced ? { opacity: 1 } : { opacity: 0.95, filter: 'blur(0px)', y: 0 }}
           viewport={{ once: true, margin: '-30px' }}
           transition={{ duration: prefersReduced ? 0.3 : 1.0, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="font-serif text-[14px] sm:text-[15px] tracking-[0.25em] uppercase text-white/95 font-medium drop-shadow-[0_1px_4px_rgba(138,85,96,0.25)]"
+          className="font-serif text-[14px] sm:text-[15px] tracking-[0.25em] uppercase text-[#ffd782] font-medium drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]"
         >
           {weddingConfig.quote.subtext}
         </motion.span>

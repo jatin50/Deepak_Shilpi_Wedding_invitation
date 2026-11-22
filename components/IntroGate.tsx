@@ -57,9 +57,9 @@ export default function IntroGate({ onOpen }: IntroGateProps) {
           role="button"
           aria-label="Tap to open the wedding invitation"
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center cursor-pointer select-none overflow-hidden touch-manipulation"
-          style={{ backgroundColor: '#e9b5bd' }}
+          style={{ backgroundColor: '#21494e' }}
         >
-          {/* Dense overlapping rose wall pattern background */}
+          {/* Dense overlapping emerald & sage floral wall pattern */}
           <div className="absolute inset-0 pointer-events-none opacity-90 overflow-hidden">
             <svg
               className="w-full h-full object-cover"
@@ -68,21 +68,21 @@ export default function IntroGate({ onOpen }: IntroGateProps) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                <radialGradient id="roseGrad1" cx="40%" cy="40%" r="60%">
-                  <stop offset="0%" stopColor="#f7d2d6" />
-                  <stop offset="60%" stopColor="#e49aa8" />
-                  <stop offset="100%" stopColor="#d98494" />
+                <radialGradient id="sageGrad1" cx="40%" cy="40%" r="60%">
+                  <stop offset="0%" stopColor="#e3f2ee" />
+                  <stop offset="60%" stopColor="#8fae9b" />
+                  <stop offset="100%" stopColor="#437175" />
                 </radialGradient>
-                <radialGradient id="roseGrad2" cx="45%" cy="45%" r="55%">
-                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
-                  <stop offset="30%" stopColor="#f0b9c2" />
-                  <stop offset="85%" stopColor="#e49aa8" />
-                  <stop offset="100%" stopColor="#bf6c7c" />
+                <radialGradient id="sageGrad2" cx="45%" cy="45%" r="55%">
+                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0.85" />
+                  <stop offset="30%" stopColor="#d5ece5" />
+                  <stop offset="85%" stopColor="#76a89e" />
+                  <stop offset="100%" stopColor="#2c5a60" />
                 </radialGradient>
-                <radialGradient id="roseGrad3" cx="35%" cy="35%" r="65%">
-                  <stop offset="0%" stopColor="#f7d2d6" />
-                  <stop offset="50%" stopColor="#d98494" />
-                  <stop offset="100%" stopColor="#aa5264" />
+                <radialGradient id="sageGrad3" cx="35%" cy="35%" r="65%">
+                  <stop offset="0%" stopColor="#e3f2ee" />
+                  <stop offset="50%" stopColor="#5d8e8a" />
+                  <stop offset="100%" stopColor="#1e4448" />
                 </radialGradient>
                 <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
                   <feGaussianBlur stdDeviation="3" result="blur" />
@@ -91,29 +91,29 @@ export default function IntroGate({ onOpen }: IntroGateProps) {
               </defs>
 
               {/* Background tonal field */}
-              <rect width="100%" height="100%" fill="#e9b5bd" />
+              <rect width="100%" height="100%" fill="#21494e" />
 
               {/* Grid of organic overlapping roses across the screen */}
               {Array.from({ length: 48 }).map((_, idx) => {
                 const col = idx % 6;
                 const row = Math.floor(idx / 6);
-                const cx = (col * 70) + (row % 2 === 0 ? 0 : 35) + 15;
-                const cy = (row * 105) + 20;
+                const cx = col * 70 + (row % 2 === 0 ? 0 : 35) + 15;
+                const cy = row * 105 + 20;
                 const size = 38 + ((idx * 7) % 22);
                 const rot = (idx * 53) % 360;
-                const gradId = idx % 3 === 0 ? 'roseGrad1' : idx % 3 === 1 ? 'roseGrad2' : 'roseGrad3';
+                const gradId = idx % 3 === 0 ? 'sageGrad1' : idx % 3 === 1 ? 'sageGrad2' : 'sageGrad3';
 
                 return (
                   <g
                     key={idx}
                     transform={`translate(${cx}, ${cy}) rotate(${rot}) scale(${size / 50})`}
-                    opacity="0.85"
+                    opacity="0.88"
                   >
                     {/* Outer petals */}
                     <path
                       d="M 0 -35 C 20 -35, 35 -20, 35 0 C 35 20, 20 35, 0 35 C -20 35, -35 20, -35 0 C -35 -20, -20 -35, 0 -35 Z"
                       fill={`url(#${gradId})`}
-                      stroke="#fff"
+                      stroke="#ffffff"
                       strokeWidth="0.8"
                       strokeOpacity="0.4"
                     />
@@ -122,20 +122,20 @@ export default function IntroGate({ onOpen }: IntroGateProps) {
                       d="M -15 -25 C 0 -32, 25 -20, 20 5 C 15 25, -15 22, -22 5 C -25 -10, -10 -22, -15 -25 Z"
                       fill={`url(#${gradId})`}
                       opacity="0.9"
-                      stroke="#fff"
+                      stroke="#ffffff"
                       strokeWidth="0.6"
                       strokeOpacity="0.5"
                     />
                     <path
                       d="M 12 -18 C 24 -5, 18 18, 0 20 C -18 18, -15 -10, 5 -15 Z"
-                      fill="#fcebee"
+                      fill="#eaf5f2"
                       opacity="0.8"
                     />
                     {/* Inner spiral bud */}
                     <path
                       d="M -5 -6 C 5 -12, 10 0, 4 8 C -4 10, -8 0, 0 -4 Z"
-                      fill="#ba5c6e"
-                      opacity="0.75"
+                      fill="#1a3d42"
+                      opacity="0.8"
                     />
                   </g>
                 );
@@ -143,7 +143,7 @@ export default function IntroGate({ onOpen }: IntroGateProps) {
             </svg>
           </div>
 
-          {/* Center Satin Bow Seal */}
+          {/* Center Champagne Gold Satin Bow Seal */}
           <div className="relative z-10 flex flex-col items-center">
             <motion.div
               initial={{ scale: prefersReduced ? 1 : 0.9, opacity: 0 }}
@@ -167,47 +167,47 @@ export default function IntroGate({ onOpen }: IntroGateProps) {
                       },
                     }
               }
-              className="relative w-[210px] h-[210px] flex items-center justify-center filter drop-shadow-[0_12px_24px_rgba(138,85,96,0.35)]"
+              className="relative w-[210px] h-[210px] flex items-center justify-center filter drop-shadow-[0_12px_28px_rgba(0,0,0,0.5)]"
             >
-              {/* Handcrafted Satin Bow SVG */}
+              {/* Handcrafted Golden Satin Bow SVG */}
               <svg
                 width="220"
                 height="220"
                 viewBox="0 0 220 220"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-full drop-shadow-[0_16px_32px_rgba(138,85,96,0.4)]"
+                className="w-full h-full drop-shadow-[0_16px_32px_rgba(0,0,0,0.55)]"
               >
                 <defs>
-                  <linearGradient id="satinGrad" x1="20" y1="20" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="goldSatinGrad" x1="20" y1="20" x2="200" y2="200" gradientUnits="userSpaceOnUse">
                     <stop offset="0%" stopColor="#ffffff" />
-                    <stop offset="20%" stopColor="#fdf2f4" />
-                    <stop offset="55%" stopColor="#f5c7cf" />
-                    <stop offset="85%" stopColor="#e399a5" />
-                    <stop offset="100%" stopColor="#d17f8e" />
+                    <stop offset="20%" stopColor="#fff2cf" />
+                    <stop offset="55%" stopColor="#e5c16b" />
+                    <stop offset="85%" stopColor="#c5a059" />
+                    <stop offset="100%" stopColor="#96742d" />
                   </linearGradient>
-                  <linearGradient id="foldShadow" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#b35a6b" stopOpacity="0.5" />
-                    <stop offset="100%" stopColor="#b35a6b" stopOpacity="0" />
+                  <linearGradient id="foldShadowGold" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#735518" stopOpacity="0.55" />
+                    <stop offset="100%" stopColor="#735518" stopOpacity="0" />
                   </linearGradient>
-                  <radialGradient id="knotGlow" cx="45%" cy="40%" r="60%">
+                  <radialGradient id="knotGlowGold" cx="45%" cy="40%" r="60%">
                     <stop offset="0%" stopColor="#ffffff" />
-                    <stop offset="40%" stopColor="#fbe6ea" />
-                    <stop offset="85%" stopColor="#e197a4" />
-                    <stop offset="100%" stopColor="#bd6475" />
+                    <stop offset="40%" stopColor="#ffefc9" />
+                    <stop offset="85%" stopColor="#d6ab4e" />
+                    <stop offset="100%" stopColor="#96742d" />
                   </radialGradient>
                 </defs>
 
                 {/* Left Ribbon Tail */}
                 <path
                   d="M 103 118 C 94 150, 75 182, 58 210 C 74 199, 88 199, 96 206 C 103 178, 108 148, 110 120 Z"
-                  fill="url(#satinGrad)"
+                  fill="url(#goldSatinGrad)"
                   stroke="#ffffff"
                   strokeWidth="1.5"
                 />
                 <path
                   d="M 103 124 C 95 155, 78 185, 66 206"
-                  stroke="url(#foldShadow)"
+                  stroke="url(#foldShadowGold)"
                   strokeWidth="2"
                   fill="none"
                 />
@@ -215,13 +215,13 @@ export default function IntroGate({ onOpen }: IntroGateProps) {
                 {/* Right Ribbon Tail */}
                 <path
                   d="M 117 118 C 126 150, 145 182, 162 210 C 146 199, 132 199, 124 206 C 117 178, 112 148, 110 120 Z"
-                  fill="url(#satinGrad)"
+                  fill="url(#goldSatinGrad)"
                   stroke="#ffffff"
                   strokeWidth="1.5"
                 />
                 <path
                   d="M 117 124 C 125 155, 142 185, 154 206"
-                  stroke="url(#foldShadow)"
+                  stroke="url(#foldShadowGold)"
                   strokeWidth="2"
                   fill="none"
                 />
@@ -229,14 +229,13 @@ export default function IntroGate({ onOpen }: IntroGateProps) {
                 {/* Left Loop of Bow */}
                 <path
                   d="M 110 105 C 76 56, 16 54, 14 96 C 12 134, 72 128, 106 113 C 98 94, 94 78, 110 105 Z"
-                  fill="url(#satinGrad)"
+                  fill="url(#goldSatinGrad)"
                   stroke="#ffffff"
                   strokeWidth="1.6"
                 />
-                {/* Left Inner Crease / Shading */}
                 <path
                   d="M 105 108 C 72 101, 38 98, 32 88 C 42 68, 80 72, 104 102"
-                  stroke="url(#foldShadow)"
+                  stroke="url(#foldShadowGold)"
                   strokeWidth="3"
                   fill="none"
                 />
@@ -250,14 +249,13 @@ export default function IntroGate({ onOpen }: IntroGateProps) {
                 {/* Right Loop of Bow */}
                 <path
                   d="M 110 105 C 144 56, 204 54, 206 96 C 208 134, 148 128, 114 113 C 122 94, 126 78, 110 105 Z"
-                  fill="url(#satinGrad)"
+                  fill="url(#goldSatinGrad)"
                   stroke="#ffffff"
                   strokeWidth="1.6"
                 />
-                {/* Right Inner Crease / Shading */}
                 <path
                   d="M 115 108 C 148 101, 182 98, 188 88 C 178 68, 140 72, 116 102"
-                  stroke="url(#foldShadow)"
+                  stroke="url(#foldShadowGold)"
                   strokeWidth="3"
                   fill="none"
                 />
@@ -268,36 +266,50 @@ export default function IntroGate({ onOpen }: IntroGateProps) {
                   fill="none"
                 />
 
-                {/* Center Knot (Round Knot with Highlights) */}
+                {/* Center Knot */}
                 <ellipse
                   cx="110"
                   cy="108"
                   rx="18"
                   ry="20"
-                  fill="url(#knotGlow)"
+                  fill="url(#knotGlowGold)"
                   stroke="#ffffff"
                   strokeWidth="1.6"
                 />
-                <path
-                  d="M 100 100 C 105 94, 115 94, 120 100"
-                  stroke="#ffffff"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                />
+
+                {/* Wax seal ring inside the knot */}
+                <circle cx="110" cy="108" r="14" fill="#1b3f44" stroke="#d4af37" strokeWidth="1.2" />
+                <text
+                  x="110"
+                  y="112"
+                  textAnchor="middle"
+                  fill="#ffd782"
+                  fontSize="10"
+                  fontFamily="var(--font-cormorant), Georgia, serif"
+                  fontWeight="600"
+                  letterSpacing="1"
+                >
+                  D&S
+                </text>
               </svg>
             </motion.div>
 
-            {/* "Tap to open" text below bow */}
+            {/* Instruction Pill */}
             <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: isOpening ? 0 : 1, y: isOpening ? -8 : 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="mt-8 flex flex-col items-center gap-1.5"
+              initial={{ opacity: 0, y: 10 }}
+              animate={
+                isOpening
+                  ? { opacity: 0, y: -10, transition: { duration: 0.3 } }
+                  : { opacity: 1, y: 0, transition: { delay: prefersReduced ? 0 : 0.8, duration: 0.6 } }
+              }
+              className="mt-6 flex flex-col items-center"
             >
-              <p className="text-white font-serif italic text-2xl tracking-widest text-center font-medium drop-shadow-[0_2px_12px_rgba(110,45,58,0.85)]">
-                Tap to open
-              </p>
-              <div className="w-8 h-[1px] bg-white/70 shadow-sm" />
+              <div className="px-5 py-2 rounded-full border border-line/60 bg-card/90 shadow-[0_8px_20px_rgba(0,0,0,0.3)] backdrop-blur-md flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-rose animate-ping" />
+                <span className="label-small text-[12.5px] tracking-[0.18em] text-ink font-semibold">
+                  TAP TO OPEN
+                </span>
+              </div>
             </motion.div>
           </div>
         </motion.div>
