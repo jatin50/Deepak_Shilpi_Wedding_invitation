@@ -239,7 +239,7 @@ export const weddingConfig: WeddingConfig = {
     title: 'Sahiba · Jasleen Royal & Stebin Ben',
   },
   meta: {
-    title: 'Shilpi & Deepak · 4 & 12 December 2026',
+    title: 'Shilpi & Deepak · 11 & 12 December 2026',
     description: 'We cordially invite you to celebrate the wedding ceremony of our loving daughter Shilpi with Deepak.',
     url: 'https://shilpi-deepak-wedding.onrender.com',
     ogImage: '/og.jpg',
