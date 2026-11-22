@@ -141,7 +141,7 @@ export const weddingConfig: WeddingConfig = {
       endTime: '2026-12-04T15:00:00+05:30',
       venue: 'At Our Residence',
       description: 'Join us for a joyful family lunch with authentic festive delicacies.',
-      iconSrc: '/img/events/haldi.webp',
+      iconSrc: '/img/events/lunch.webp',
     },
     {
       id: 'bhat',
@@ -165,7 +165,7 @@ export const weddingConfig: WeddingConfig = {
       endTime: '2026-12-04T23:00:00+05:30',
       venue: 'At Our Residence',
       description: 'An enchanting evening of intricate henna art, joyful music, and celebratory dinner.',
-      iconSrc: '/img/events/sangeet.webp',
+      iconSrc: '/img/events/mehndi.webp',
     },
     {
       id: 'wedding',
@@ -219,18 +219,18 @@ export const weddingConfig: WeddingConfig = {
       'Mr. Deepak Garg',
       'All Garg Family',
     ],
-    whatsappNumber: '919717508075',
+    whatsappNumber: '7042730361',
     prefilledMessage: 'Dear Shilpi & Deepak, I would love to celebrate with you at your wedding ceremonies!',
     contacts: [
       {
         role: "Bride's Father",
         name: 'Mr. Ashok Garg',
-        phone: '+91 9717508075',
+        phone: '+91 7042730361',
       },
       {
         role: "Bride's Family",
         name: 'Mr. Deepak Garg',
-        phone: '+91 9717457062',
+        phone: '+91 8130637570',
       },
     ],
   },

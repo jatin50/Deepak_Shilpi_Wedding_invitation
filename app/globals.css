@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #f4f8f7;
-  --color-card: #ffffff;
-  --color-ink: #1f3a3d;
-  --color-soft: #55787a;
-  --color-rose: #c5a059;
-  --color-line: #d3e4e1;
-  --color-sage: #8fae9b;
-  --color-wash: #e3efeb;
-  --color-intro-pink: #244b50;
+  --color-bg: #fbf1ed;
+  --color-card: #fff9f6;
+  --color-ink: #8a5560;
+  --color-soft: #b58c92;
+  --color-rose: #d9a0a8;
+  --color-line: #ecd3cd;
+  --color-sage: #a9bfa8;
+  --color-wash: #f6dcd6;
+  --color-intro-pink: #e9b5bd;
 }
 
 html {
@@ -43,7 +43,7 @@ body.scroll-locked {
   position: relative;
   background-color: var(--color-card);
   border: 1px solid var(--color-line);
-  box-shadow: 0 8px 30px -8px rgba(31, 58, 61, 0.12);
+  box-shadow: 0 8px 30px -8px rgba(217, 160, 168, 0.2);
 }
 
 .stationery-card::before {
@@ -81,7 +81,7 @@ body.scroll-locked {
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--color-ink);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
 /* Real Venue Photo in Arch Frame */
@@ -122,8 +122,8 @@ button:focus-visible {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(to top, rgba(227, 239, 235, 0.55), transparent 38%),
-    linear-gradient(rgba(227, 239, 235, 0.18), transparent 25%);
+    linear-gradient(to top, rgba(246, 220, 214, 0.55), transparent 38%),
+    linear-gradient(rgba(246, 220, 214, 0.18), transparent 25%);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -15,7 +15,7 @@ export default function RSVP() {
   const prefersReduced = useReducedMotion();
 
   const gCalUrl = getAllEventsGoogleCalendarUrl(
-    `${weddingConfig.couple.groomShort} & ${weddingConfig.couple.brideShort}`
+    `${weddingConfig.couple.brideShort} & ${weddingConfig.couple.groomShort}`
   );
 
   const handleShare = async () => {
@@ -49,7 +49,7 @@ export default function RSVP() {
   };
 
   const handleSaveCalendar = () => {
-    downloadICS(weddingConfig.events, `${weddingConfig.couple.groomShort} & ${weddingConfig.couple.brideShort}`);
+    downloadICS(weddingConfig.events, `${weddingConfig.couple.brideShort} & ${weddingConfig.couple.groomShort}`);
   };
 
   const cleanWhatsappNumber = weddingConfig.rsvp.whatsappNumber.replace(/\D/g, '');

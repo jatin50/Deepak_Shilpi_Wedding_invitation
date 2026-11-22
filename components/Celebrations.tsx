@@ -14,7 +14,7 @@ function EventCard({ event, index }: { event: WeddingEvent; index: number }) {
 
   const googleCalUrl = getGoogleCalendarUrl(
     event,
-    `${weddingConfig.couple.groomShort} & ${weddingConfig.couple.brideShort}`
+    `${weddingConfig.couple.brideShort} & ${weddingConfig.couple.groomShort}`
   );
 
   return (

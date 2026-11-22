@@ -25,7 +25,7 @@ export default function QuoteBand() {
       {/* Background Gradient & Parallax Lace Pattern */}
       <motion.div
         style={prefersReduced ? {} : { y: bgY }}
-        className="absolute -inset-10 z-0 bg-gradient-to-b from-[#2b565b] via-[#1f4246] to-[#152e31]"
+        className="absolute -inset-10 z-0 bg-gradient-to-b from-[#e8b4b4] via-[#dfa5af] to-[#d99aa3]"
       >
         {/* Seamless Lace Pattern Overlay */}
         <div
@@ -60,7 +60,7 @@ export default function QuoteBand() {
           whileInView={prefersReduced ? { opacity: 1 } : { opacity: 0.95, filter: 'blur(0px)', y: 0 }}
           viewport={{ once: true, margin: '-30px' }}
           transition={{ duration: prefersReduced ? 0.3 : 1.0, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="font-serif text-[14px] sm:text-[15px] tracking-[0.25em] uppercase text-[#ffd782] font-medium drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]"
+          className="font-serif text-[14px] sm:text-[15px] tracking-[0.25em] uppercase text-white font-medium drop-shadow-[0_1px_4px_rgba(0,0,0,0.25)]"
         >
           {weddingConfig.quote.subtext}
         </motion.span>
