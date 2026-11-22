@@ -8,116 +8,143 @@ interface AudioPlayerProps {
   shouldStart: boolean;
 }
 
-const TARGET_VOLUME = 0.38;
+const TARGET_VOLUME = 0.42;
 
 export default function AudioPlayer({ shouldStart }: AudioPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const fadeIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const clearFade = () => {
-    if (fadeIntervalRef.current) {
-      clearInterval(fadeIntervalRef.current);
-      fadeIntervalRef.current = null;
-    }
-  };
-
-  const fadeIn = (audio: HTMLAudioElement) => {
-    clearFade();
-    audio.volume = 0;
-    const step = TARGET_VOLUME / 12; // ~600ms warm fade-in so flute starts promptly
-    fadeIntervalRef.current = setInterval(() => {
-      if (audio.volume + step >= TARGET_VOLUME) {
-        audio.volume = TARGET_VOLUME;
-        clearFade();
-      } else {
-        audio.volume = Math.min(TARGET_VOLUME, audio.volume + step);
-      }
-    }, 50);
-  };
-
-  const fadeOutAndPause = (audio: HTMLAudioElement) => {
-    clearFade();
-    const step = audio.volume / 10; // ~300ms gentle fade-out
-    fadeIntervalRef.current = setInterval(() => {
-      if (audio.volume - step <= 0.01) {
-        audio.volume = 0;
-        audio.pause();
-        clearFade();
-      } else {
-        audio.volume = Math.max(0, audio.volume - step);
-      }
-    }, 30);
-  };
+  const toastTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const audio = new Audio(weddingConfig.music.src);
+    // Create single dedicated Audio instance
+    const audio = new Audio();
+    audio.src = weddingConfig.music.src;
     audio.loop = true;
     audio.preload = 'auto';
-    audio.volume = 0;
+
+    // Synchronize React state directly with native audio events
+    // This handles iOS control center, lock screen, bluetooth events, etc.
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+    const handleEnded = () => setIsPlaying(false);
+
+    audio.addEventListener('play', handlePlay);
+    audio.addEventListener('pause', handlePause);
+    audio.addEventListener('ended', handleEnded);
+
     audioRef.current = audio;
 
     return () => {
-      clearFade();
-      audio.pause();
-      audio.src = '';
+      audio.removeEventListener('play', handlePlay);
+      audio.removeEventListener('pause', handlePause);
+      audio.removeEventListener('ended', handleEnded);
+      try {
+        audio.pause();
+        audio.src = '';
+      } catch {}
+      audioRef.current = null;
+      if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
     };
   }, []);
 
-  // Start playing with prompt warm fade-in after intro gate tap
+  // Cue playback on intro gate unlock
   useEffect(() => {
-    if (shouldStart && audioRef.current && !isPlaying) {
+    if (shouldStart && audioRef.current) {
       const audio = audioRef.current;
+      if (!audio.paused) return;
+
       try {
         if (audio.currentTime < 1.5 && audio.readyState >= 1) {
           audio.currentTime = 1.5;
         }
-      } catch {
-        // Ignore seek errors before metadata loads
+      } catch {}
+
+      // Set target volume safely (desktop & Android support this, iOS safely ignores)
+      try {
+        audio.volume = TARGET_VOLUME;
+      } catch {}
+      audio.muted = false;
+
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+            setShowToast(true);
+            toastTimeoutRef.current = setTimeout(() => setShowToast(false), 3200);
+          })
+          .catch((err) => {
+            console.warn('Audio play prevented by browser policy:', err);
+            setIsPlaying(false);
+          });
       }
-      audio
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-          fadeIn(audio);
-        })
-        .catch((err) => {
-          console.warn('Audio play prevented by browser policy:', err);
-        });
     }
   }, [shouldStart]);
 
+  // Synchronous, bulletproof toggle for iOS Safari, Android, and Desktop
   const toggleMusic = () => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    if (isPlaying) {
+    if (!audio.paused) {
+      // 100% IMMEDIATE STOP:
+      // Mute and pause synchronously inside the user gesture event handler.
+      // This eliminates the iOS bug where volume-fading loops failed to pause!
+      audio.muted = true;
+      try {
+        audio.pause();
+      } catch (err) {
+        console.warn('Audio pause error:', err);
+      }
       setIsPlaying(false);
-      fadeOutAndPause(audio);
     } else {
-      audio
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-          fadeIn(audio);
-        })
-        .catch(() => {});
+      audio.muted = false;
+      try {
+        audio.volume = TARGET_VOLUME;
+      } catch {}
+
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch((err) => {
+            console.warn('Playback error:', err);
+            setIsPlaying(false);
+          });
+      }
     }
   };
 
   return (
-    <div className="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-[calc(1.5rem+env(safe-area-inset-right))] z-40">
+    <div className="fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom))] right-[calc(1.25rem+env(safe-area-inset-right))] z-40 flex items-center gap-2">
+      {/* Subtle toast indicator on initial playback */}
+      {showToast && (
+        <div className="hidden sm:flex items-center px-3.5 py-1.5 rounded-full bg-card/95 border border-line text-ink font-serif text-[13px] shadow-rose-subtle backdrop-blur-sm animate-fade-in">
+          <span>♪ Playing Wedding Flute & Sitar</span>
+        </div>
+      )}
+
       <button
         type="button"
         onClick={toggleMusic}
         aria-label={isPlaying ? 'Mute wedding instrumental music' : 'Play wedding instrumental music'}
-        title={isPlaying ? 'Mute instrumental music' : 'Play instrumental music'}
-        className="w-10 h-10 rounded-full border border-rose bg-card/90 backdrop-blur-md shadow-rose-subtle flex items-center justify-center text-ink hover:text-soft hover:bg-wash/50 transition-all duration-200 active:scale-95 focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2"
+        title={isPlaying ? 'Mute music' : 'Play music'}
+        className={`w-12 h-12 rounded-full border border-rose/80 bg-card/95 backdrop-blur-md shadow-[0_6px_22px_-4px_rgba(217,160,168,0.38)] flex items-center justify-center text-ink hover:text-soft hover:bg-wash/50 transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 ${
+          isPlaying ? 'ring-2 ring-rose/50' : ''
+        }`}
       >
         {isPlaying ? (
-          <Volume2 className="w-4 h-4 text-ink animate-pulse" />
+          <div className="flex items-end justify-center gap-[2.5px] h-4">
+            {/* Equalizer audio wave animation */}
+            <span className="w-[2.5px] h-2.5 bg-ink rounded-full animate-[pulse_0.8s_ease-in-out_infinite]" />
+            <span className="w-[2.5px] h-4 bg-ink rounded-full animate-[pulse_0.6s_ease-in-out_infinite_0.15s]" />
+            <span className="w-[2.5px] h-3 bg-ink rounded-full animate-[pulse_0.9s_ease-in-out_infinite_0.3s]" />
+          </div>
         ) : (
-          <VolumeX className="w-4 h-4 text-soft" />
+          <VolumeX className="w-5 h-5 text-soft" />
         )}
       </button>
     </div>

@@ -34,9 +34,18 @@ export default function Footer() {
         </h3>
 
         {/* Italic line: "Your presence is the only gift we are hoping for." */}
-        <p className="font-serif italic text-[17px] sm:text-[18px] text-soft max-w-[320px]">
+        <p className="font-serif italic text-[17px] sm:text-[18px] text-soft max-w-[320px] mb-6">
           Your presence is the only gift we are hoping for.
         </p>
+
+        {/* Back to Top Button */}
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-line bg-card/80 text-soft hover:text-ink hover:border-ink/60 text-[12px] font-serif tracking-[0.16em] uppercase transition-colors"
+        >
+          <span>↑ BACK TO TOP</span>
+        </button>
       </div>
     </footer>
   );

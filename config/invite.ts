@@ -142,7 +142,7 @@ export const weddingConfig: WeddingConfig = {
       endTime: '2026-12-12T14:00:00+05:30',
       venue: 'At Our Residence',
       description: 'Auspicious maternal blessings welcoming maternal uncles (Mama Ji) and family with joy and rituals.',
-      iconSrc: '/img/events/haldi.webp',
+      iconSrc: '/img/events/bhaat.webp',
     },
     {
       id: 'gudh-chadi',
@@ -154,7 +154,7 @@ export const weddingConfig: WeddingConfig = {
       endTime: '2026-12-12T19:30:00+05:30',
       venue: 'At Our Residence',
       description: 'The auspicious horse-mounting ritual with sehra bandi, family dance, and elders’ blessings.',
-      iconSrc: '/img/events/sangeet.webp',
+      iconSrc: '/img/events/ghodi.webp',
     },
     {
       id: 'barat',

@@ -1,173 +1,130 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { MapPin } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { MapPin, CalendarPlus, Clock } from 'lucide-react';
 import { weddingConfig, WeddingEvent } from '@/config/invite';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { getGoogleCalendarUrl } from '@/lib/calendar';
 
 function EventCard({ event, index }: { event: WeddingEvent; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const iconRef = useRef<HTMLDivElement>(null);
   const prefersReduced = useReducedMotion();
   const [imgError, setImgError] = useState(false);
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || prefersReduced) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const el = cardRef.current;
-    const iconEl = iconRef.current;
-    if (!el) return;
-
-    // Scroll-scrubbed crossfade:
-    // Starts at opacity 0, blur 8px, y: 16px.
-    // Animates to sharp full opacity as it reaches middle of screen.
-    // Fades back out as it scrolls past screen top.
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        end: 'bottom 15%',
-        scrub: 0.6,
-      },
-    });
-
-    // Enter phase: blur 8px -> 0px, opacity 0 -> 1, y 16 -> 0
-    tl.fromTo(
-      el,
-      { opacity: 0, filter: 'blur(8px)', y: 16 },
-      { opacity: 1, filter: 'blur(0px)', y: 0, ease: 'power2.out', duration: 1 }
-    );
-
-    // Mid sustain
-    tl.to(el, { opacity: 1, filter: 'blur(0px)', duration: 0.8 });
-
-    // Exit phase: softly blurs and fades back out as next arrives
-    tl.to(el, {
-      opacity: 0.2,
-      filter: 'blur(5px)',
-      y: -12,
-      ease: 'power2.in',
-      duration: 1,
-    });
-
-    // Icon slight 3-degree rotation as it enters
-    if (iconEl) {
-      gsap.fromTo(
-        iconEl,
-        { rotation: -3 },
-        {
-          rotation: 3,
-          ease: 'power1.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 80%',
-            end: 'center 40%',
-            scrub: true,
-          },
-        }
-      );
-    }
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => {
-        if (t.vars.trigger === el) t.kill();
-      });
-    };
-  }, [prefersReduced]);
+  const googleCalUrl = getGoogleCalendarUrl(
+    event,
+    `${weddingConfig.couple.groomShort} & ${weddingConfig.couple.brideShort}`
+  );
 
   return (
-    <div
-      ref={cardRef}
-      className="relative flex flex-col items-center text-center my-10 px-4 w-full max-w-[440px] will-change-transform"
-      style={prefersReduced ? { opacity: 1, filter: 'none', transform: 'none' } : {}}
+    <motion.div
+      initial={prefersReduced ? false : { opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: prefersReduced ? 0 : 0.7, delay: prefersReduced ? 0 : index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      className="relative w-full max-w-[460px] bg-card stationery-card rounded-2xl p-6 sm:p-8 shadow-rose-subtle my-5 flex flex-col items-center text-center border border-line/80"
     >
-      {/* Event Watercolor Icon (~120px) */}
-      <div
-        ref={iconRef}
-        className="relative w-[120px] h-[120px] mb-4 flex items-center justify-center will-change-transform"
-      >
+      {/* Top Ceremony Counter Badge */}
+      <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-wash/50 border border-line/70 mb-4">
+        <span className="label-small text-[11px] sm:text-[12px] text-ink font-semibold tracking-[0.18em]">
+          CEREMONY 0{index + 1}
+        </span>
+        <span className="text-line text-xs">·</span>
+        <span className="label-small text-[11px] sm:text-[12px] text-soft">
+          {event.dayLabel.split(' · ')[0]}
+        </span>
+      </div>
+
+      {/* Prominent Watercolor Illustration (210px on mobile, 240px on desktop) */}
+      <div className="relative w-[210px] h-[210px] sm:w-[240px] sm:h-[240px] rounded-[36px] overflow-hidden border border-line/80 bg-gradient-to-b from-[#fffaf7] via-card to-wash/40 shadow-[0_10px_28px_-6px_rgba(217,160,168,0.22)] mb-5 group">
         {!imgError ? (
-          <div className="relative w-full h-full rounded-full overflow-hidden border border-line/50 shadow-rose-subtle bg-card/60">
-            <Image
-              src={event.iconSrc}
-              alt={event.name}
-              fill
-              className="object-contain p-2"
-              sizes="120px"
-              onError={() => setImgError(true)}
-            />
-          </div>
+          <Image
+            src={event.iconSrc}
+            alt={event.name}
+            fill
+            className="object-contain p-2.5 sm:p-3 transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 520px) 210px, 240px"
+            priority={index === 0}
+            loading={index === 0 ? undefined : 'lazy'}
+            onError={() => setImgError(true)}
+          />
         ) : (
-          /* Rose-shaped SVG fallback */
-          <div className="w-[110px] h-[110px] rounded-full border border-line flex items-center justify-center bg-card shadow-rose-subtle">
+          <div className="w-full h-full flex items-center justify-center p-4">
             <svg
-              width="64"
-              height="64"
+              width="80"
+              height="80"
               viewBox="0 0 64 64"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className="text-rose opacity-80"
             >
-              <circle cx="32" cy="32" r="28" stroke="var(--color-rose)" strokeWidth="1" strokeDasharray="3 3" />
+              <circle cx="32" cy="32" r="28" stroke="currentColor" strokeWidth="1.2" strokeDasharray="3 3" />
               <path
                 d="M 32 18 C 38 18, 44 24, 42 32 C 40 40, 32 44, 26 40 C 20 36, 20 28, 26 22 C 30 18, 34 22, 36 26"
-                stroke="var(--color-rose)"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
-                fill="none"
-              />
-              <path
-                d="M 28 28 C 30 26, 34 26, 34 30 C 34 34, 30 34, 29 32"
-                stroke="var(--color-soft)"
-                strokeWidth="1.2"
-                strokeLinecap="round"
-                fill="none"
               />
             </svg>
           </div>
         )}
       </div>
 
-      {/* Event Name in Pinyon Script (44px) */}
-      <h3 className="font-script text-[42px] sm:text-[46px] leading-[1.05] text-ink mb-2">
+      {/* Ceremony Name in Pinyon Script */}
+      <h3 className="font-script text-[42px] sm:text-[48px] leading-[1.05] text-ink mb-2">
         {event.name}
       </h3>
 
-      {/* Day label and Date */}
-      <p className="label-small text-[12px] sm:text-[13px] text-soft tracking-[0.16em] mb-1">
+      {/* Ceremony Meaning & Warm Storytelling Description */}
+      {event.description && (
+        <p className="font-serif italic text-soft text-[15.5px] sm:text-[16.5px] leading-relaxed max-w-[360px] mb-4">
+          {event.description}
+        </p>
+      )}
+
+      {/* Date & Time Badge */}
+      <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-wash/45 border border-line/70 text-ink font-serif text-[15.5px] sm:text-[16.5px] font-medium mb-2.5">
+        <Clock className="w-4 h-4 text-soft shrink-0" />
+        <span>{event.time}</span>
+      </div>
+
+      {/* Full Date Line */}
+      <p className="label-small text-[12px] sm:text-[13px] text-soft tracking-[0.16em] mb-2">
         {event.dayLabel}
       </p>
 
-      {/* Time */}
-      <p className="font-serif text-[18px] sm:text-[19px] text-ink font-medium mb-1">
-        {event.time}
-      </p>
-
       {/* Venue line */}
-      <p className="font-serif italic text-[16px] text-soft mb-2">
-        {event.venue}
-      </p>
+      <div className="flex items-center justify-center gap-1.5 text-soft font-serif text-[15px] sm:text-[16px] mb-4 max-w-[340px]">
+        <MapPin className="w-3.5 h-3.5 text-rose shrink-0" />
+        <span>{event.venue}</span>
+      </div>
 
-      {/* Optional map direction link for this venue */}
-      {event.mapUrl && (
+      {/* Action Buttons: View on Map & 1-Click Add to Calendar */}
+      <div className="flex items-center justify-center gap-2.5 flex-wrap pt-2 border-t border-line/60 w-full">
+        {event.mapUrl && (
+          <a
+            href={event.mapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-ink/70 text-ink font-serif text-[13px] tracking-tracked hover:bg-wash active:bg-wash/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
+          >
+            <MapPin className="w-3 h-3 text-ink" />
+            <span>VIEW ON MAP</span>
+          </a>
+        )}
+
         <a
-          href={event.mapUrl}
+          href={googleCalUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-[13px] font-serif text-ink hover:text-soft underline underline-offset-4 mb-3"
+          className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-line text-soft hover:text-ink hover:border-ink/70 font-serif text-[13px] tracking-tracked hover:bg-wash/50 active:bg-wash transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink"
         >
-          <MapPin className="w-3.5 h-3.5 text-soft" />
-          <span>View on Map</span>
+          <CalendarPlus className="w-3 h-3 text-soft" />
+          <span>ADD TO CALENDAR</span>
         </a>
-      )}
-
-      {/* 60px hairline divider */}
-      <div className="w-[60px] h-[1px] bg-line/80 mx-auto mt-4 mb-2" />
-    </div>
+      </div>
+    </motion.div>
   );
 }
 
@@ -182,7 +139,7 @@ export default function Celebrations() {
         </h2>
       </div>
 
-      {/* Vertical Sequence of Events */}
+      {/* Vertical Sequence of Luxury Event Cards */}
       <div className="w-full flex flex-col items-center">
         {weddingConfig.events.map((event, index) => (
           <EventCard key={event.id} event={event} index={index} />

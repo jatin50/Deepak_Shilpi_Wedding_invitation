@@ -2,15 +2,21 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Share2, MessageCircle, Phone, Check, Heart } from 'lucide-react';
+import { Calendar, Share2, MessageCircle, Phone, Check, Heart, ChevronDown } from 'lucide-react';
 import { weddingConfig } from '@/config/invite';
 import { downloadICS } from '@/lib/ics';
+import { getAllEventsGoogleCalendarUrl } from '@/lib/calendar';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 export default function RSVP() {
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('Invitation link copied to clipboard!');
+  const [showCalendarMenu, setShowCalendarMenu] = useState(false);
   const prefersReduced = useReducedMotion();
+
+  const gCalUrl = getAllEventsGoogleCalendarUrl(
+    `${weddingConfig.couple.groomShort} & ${weddingConfig.couple.brideShort}`
+  );
 
   const handleShare = async () => {
     const shareData = {
@@ -144,15 +150,45 @@ export default function RSVP() {
               </a>
 
               {/* Secondary Outlined Buttons Grid */}
-              <div className="grid grid-cols-2 gap-3 w-full">
-                <button
-                  type="button"
-                  onClick={handleSaveCalendar}
-                  className="flex items-center justify-center gap-1.5 py-3 px-3 rounded-md border border-ink text-ink font-serif text-[13px] sm:text-[14px] tracking-tracked hover:bg-wash active:bg-wash/80 transition-colors duration-250 focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2"
-                >
-                  <Calendar className="w-3.5 h-3.5 text-soft" />
-                  <span>SAVE THE DATES</span>
-                </button>
+              <div className="grid grid-cols-2 gap-3 w-full relative">
+                <div className="relative">
+                  <button
+                    type="button"
+                    onClick={() => setShowCalendarMenu((prev) => !prev)}
+                    className="w-full flex items-center justify-center gap-1.5 py-3 px-3 rounded-md border border-ink text-ink font-serif text-[13px] sm:text-[14px] tracking-tracked hover:bg-wash active:bg-wash/80 transition-colors duration-250 focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2"
+                  >
+                    <Calendar className="w-3.5 h-3.5 text-soft" />
+                    <span>SAVE DATES</span>
+                    <ChevronDown className="w-3 h-3 text-soft" />
+                  </button>
+
+                  {/* Calendar Options Dropup Menu */}
+                  {showCalendarMenu && (
+                    <div className="absolute bottom-full mb-2 left-0 right-0 sm:right-auto sm:w-56 bg-card border border-line rounded-xl shadow-lg p-1.5 flex flex-col gap-1 z-30 animate-fade-in backdrop-blur-md">
+                      <a
+                        href={gCalUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setShowCalendarMenu(false)}
+                        className="px-3 py-2 text-left text-[13px] font-serif text-ink hover:bg-wash/60 rounded-lg transition-colors flex items-center gap-2"
+                      >
+                        <Calendar className="w-3.5 h-3.5 text-rose shrink-0" />
+                        <span>Google Calendar</span>
+                      </a>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          handleSaveCalendar();
+                          setShowCalendarMenu(false);
+                        }}
+                        className="px-3 py-2 text-left text-[13px] font-serif text-ink hover:bg-wash/60 rounded-lg transition-colors flex items-center gap-2"
+                      >
+                        <Calendar className="w-3.5 h-3.5 text-soft shrink-0" />
+                        <span>Apple / Outlook (.ics)</span>
+                      </button>
+                    </div>
+                  )}
+                </div>
 
                 <button
                   type="button"
