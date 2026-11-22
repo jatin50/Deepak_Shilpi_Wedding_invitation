@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #f4f8f7;
+  --color-card: #ffffff;
+  --color-ink: #1f3a3d;
+  --color-soft: #55787a;
+  --color-rose: #c5a059;
+  --color-line: #d3e4e1;
+  --color-sage: #8fae9b;
+  --color-wash: #e3efeb;
+  --color-intro-pink: #244b50;
+}
+
+html {
+  font-family: var(--font-cormorant), Georgia, serif;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  line-height: 1.55;
+  font-size: 19px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body.scroll-locked {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Luxury double-border stationery box */
+.stationery-card {
+  position: relative;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 8px 30px -8px rgba(31, 58, 61, 0.12);
+}
+
+.stationery-card::before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  bottom: 9px;
+  left: 9px;
+  right: 9px;
+  border: 1px solid var(--color-line);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Mughal Arch Curves */
+.arch-hero {
+  border-radius: 260px 260px 0 0;
+}
+
+.arch-window {
+  border-radius: 180px 180px 0 0;
+}
+
+/* Small label styling */
+.label-small {
+  font-family: var(--font-cormorant), serif;
+  font-size: 14.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-soft);
+  font-weight: 500;
+}
+
+/* Focus styles for keyboard accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+/* Real Venue Photo in Arch Frame */
+.venue-arch-wrap {
+  display: grid;
+  place-items: center;
+  margin-top: 18px;
+  margin-bottom: 26px;
+  width: 100%;
+}
+
+.venue-arch-frame {
+  width: min(300px, 82%);
+  aspect-ratio: 620 / 663;
+  overflow: hidden;
+  position: relative;
+  border-radius: 999px 999px 18px 18px;
+  box-shadow:
+    0 0 0 8px var(--color-wash),
+    0 0 0 9px var(--color-rose),
+    0 24px 50px -28px var(--color-rose);
+  background-color: var(--color-card);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.venue-arch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.9) brightness(1.04);
+  transition: transform 2.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.venue-arch-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to top, rgba(227, 239, 235, 0.55), transparent 38%),
+    linear-gradient(rgba(227, 239, 235, 0.18), transparent 25%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .venue-arch-img {
+    transition: none !important;
+    transform: scale(1) !important;
+  }
+  .venue-arch-frame {
+    transition: none !important;
+    opacity: 1 !important;
+  }
+}

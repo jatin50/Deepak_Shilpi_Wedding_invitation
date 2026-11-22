@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: shilpi-deepak-wedding
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: out
+    headers:
+      - path: /_next/static/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /img/*
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /audio/*
+        name: Cache-Control
+        value: public, max-age=2592000
