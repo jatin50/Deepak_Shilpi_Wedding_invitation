@@ -54,12 +54,6 @@ export default function AudioPlayer({ shouldStart }: AudioPlayerProps) {
       const audio = audioRef.current;
       if (!audio.paused) return;
 
-      try {
-        if (audio.currentTime < 1.5 && audio.readyState >= 1) {
-          audio.currentTime = 1.5;
-        }
-      } catch {}
-
       // Set target volume safely (desktop & Android support this, iOS safely ignores)
       try {
         audio.volume = TARGET_VOLUME;
@@ -123,7 +117,7 @@ export default function AudioPlayer({ shouldStart }: AudioPlayerProps) {
       {/* Subtle toast indicator on initial playback */}
       {showToast && (
         <div className="hidden sm:flex items-center px-3.5 py-1.5 rounded-full bg-card/95 border border-line text-ink font-serif text-[13px] shadow-rose-subtle backdrop-blur-sm animate-fade-in">
-          <span>♪ Playing Wedding Flute & Sitar</span>
+          <span>♪ Playing Sahiba · Jasleen Royal</span>
         </div>
       )}
 

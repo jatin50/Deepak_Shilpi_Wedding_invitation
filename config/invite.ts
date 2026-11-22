@@ -243,8 +243,8 @@ export const weddingConfig: WeddingConfig = {
     ],
   },
   music: {
-    src: '/audio/instrumental.mp3?v=3',
-    title: 'Bansuri Flute, Sitar & Tabla · Indian Wedding Instrumental',
+    src: '/audio/instrumental.mp3?v=5',
+    title: 'Sahiba · Jasleen Royal & Stebin Ben',
   },
   meta: {
     title: 'Deepak & Shilpi · 11 & 12 December 2026',
