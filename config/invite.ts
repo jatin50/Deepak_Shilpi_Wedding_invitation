@@ -145,8 +145,8 @@ export const weddingConfig: WeddingConfig = {
       iconSrc: '/img/events/bhaat.webp',
     },
     {
-      id: 'gudh-chadi',
-      name: 'Gudh Chadi',
+      id: 'ghud-chadi',
+      name: 'Ghud Chadi',
       dayLabel: 'SATURDAY · 12 DECEMBER 2026',
       date: '12 December 2026',
       isoDate: '2026-12-12T18:00:00+05:30',
