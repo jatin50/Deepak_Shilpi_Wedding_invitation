@@ -156,7 +156,7 @@ export default function SaveTheDate() {
 
             {/* Caption */}
             <p className="font-serif italic text-soft text-[17px] sm:text-[18px] mt-4 tracking-wide text-center">
-              until we say “I do”
+              until we take our vows!
             </p>
           </div>
         )}
