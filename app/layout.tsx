@@ -1,30 +1,7 @@
 import type { Metadata, Viewport } from 'next';
-import { Pinyon_Script, Cormorant_Garamond, Noto_Serif_Devanagari } from 'next/font/google';
 import './globals.css';
 import LenisProvider from '@/components/LenisProvider';
 import { weddingConfig } from '@/config/invite';
-
-const pinyon = Pinyon_Script({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-pinyon',
-  display: 'swap',
-});
-
-const cormorant = Cormorant_Garamond({
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  variable: '--font-cormorant',
-  display: 'swap',
-});
-
-const devanagari = Noto_Serif_Devanagari({
-  weight: ['400', '500', '600'],
-  subsets: ['devanagari'],
-  variable: '--font-devanagari',
-  display: 'swap',
-});
 
 const siteUrl =
   process.env.RENDER_EXTERNAL_URL ||
@@ -81,7 +58,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${pinyon.variable} ${cormorant.variable} ${devanagari.variable}`}>
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Noto+Serif+Devanagari:wght@400;500;600&family=Pinyon+Script&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="bg-bg text-ink antialiased min-h-screen selection:bg-rose/30">
         <LenisProvider>{children}</LenisProvider>
       </body>

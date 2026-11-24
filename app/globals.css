@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 :root {
+  --font-pinyon: 'Pinyon Script', cursive;
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-devanagari: 'Noto Serif Devanagari', serif;
   --color-bg: #f4f8f7;
   --color-card: #ffffff;
   --color-ink: #1f3a3d;
